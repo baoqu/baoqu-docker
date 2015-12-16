@@ -1,0 +1,16 @@
+---
+back:
+  image: baoqu/back
+  ports:
+    - 5050
+  volumes:
+    - "baoqu-back:/app"
+
+front:
+  image: baoqu/front
+  links:
+    - back:back
+  ports:
+    - 3449
+  volumes:
+    - "baoqu-front:/app"
