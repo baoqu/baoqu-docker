@@ -1,0 +1,6 @@
+[submodule "baoqu-front"]
+	path = baoqu-front
+	url = git@github.com:baoqu/baoqu-front.git
+[submodule "baoqu-back"]
+	path = baoqu-back
+	url = git@github.com:baoqu/baoqu-back.git
