@@ -2,15 +2,15 @@
 back:
   image: baoqu/back
   ports:
-    - 5050
+    - "127.0.0.1:5050:5050"
   volumes:
-    - "baoqu-back:/app"
+    - "./baoqu-back:/app"
 
 front:
   image: baoqu/front
   links:
     - back:back
   ports:
-    - 3449
+    - "127.0.0.1:3449:3449"
   volumes:
-    - "baoqu-front:/app"
+    - "./baoqu-front:/app"
