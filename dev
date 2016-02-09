@@ -1,0 +1,21 @@
+#!/bin/bash
+
+function usage {
+    echo "$0 [ command ]"
+    echo ""
+    echo "Commands:"
+    echo "  build: builds the docker image"
+    echo "  enter: spins up the container and launches tmux"
+}
+
+case $1 in
+    build)
+        docker build -t baoqu/dev -f docker/Dockerfile docker
+        ;;
+    enter)
+        docker run -it -v `pwd`/baoqu-back:/home/user/app-back -v `pwd`/baoqu-front:/home/user/app-front -v $HOME/.lein:/home/user/.lein -v $HOME/.m2:/home/user/.m2 -p 3449:3449 -p 5050:5050 baoqu/dev
+        ;;
+    *)
+        usage
+        ;;
+esac
