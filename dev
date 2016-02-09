@@ -4,11 +4,15 @@ function usage {
     echo "$0 [ command ]"
     echo ""
     echo "Commands:"
+    echo "  init: initializes baoqu submodules"
     echo "  build: builds the docker image"
     echo "  enter: spins up the container and launches tmux"
 }
 
 case $1 in
+    init)
+        git submodule init && git submodule update
+        ;;
     build)
         docker build -t baoqu/dev -f docker/Dockerfile docker
         ;;
