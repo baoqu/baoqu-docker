@@ -5,6 +5,7 @@ function usage {
     echo ""
     echo "Commands:"
     echo "  init: initializes baoqu submodules"
+    echo "  master: pull master branch on both submodules"
     echo "  build: builds the docker image"
     echo "  enter: spins up the container and launches tmux"
 }
@@ -12,6 +13,9 @@ function usage {
 case $1 in
     init)
         git submodule init && git submodule update
+        ;;
+    master)
+        git submodule foreach git checkout master && git submodule foreach git pull
         ;;
     build)
         docker build -t baoqu/dev -f docker/Dockerfile docker
