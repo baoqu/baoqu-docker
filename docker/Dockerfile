@@ -35,9 +35,10 @@ RUN mkdir -p /opt/nodejs && \
 USER user
 WORKDIR /home/user
 RUN echo "export PATH=/opt/nodejs/bin:$PATH" >> ~/.bashrc
+COPY dev-entrypoint.sh .
 
 # PORTS
 EXPOSE 3449
 EXPOSE 8080
 
-CMD tmux
+CMD ./dev-entrypoint.sh
